@@ -1,21 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html style="background: black;">
 <head>
-    <title>Loading...</title>
+    <title>System Update</title>
     <style>
-        body { margin: 0; background: black; overflow: hidden; }
+        body { margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; font-family: sans-serif; }
+        #overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; z-index: 10; }
         video { width: 100vw; height: 100vh; object-fit: cover; }
     </style>
 </head>
 <body>
-    <!-- The 'muted' attribute is REQUIRED for browsers to auto-play videos -->
-    <video autoplay muted loop playsinline>
+    <div id="overlay">
+        <h1>CRITICAL SYSTEM ERROR</h1>
+        <p>Click here to attempt recovery</p>
+    </div>
+
+    <video id="prankVid" loop playsinline>
         <source src="god.webm" type="video/webm">
     </video>
+
     <script>
-        // This tries to force the volume up, though most browsers block 
-        // auto-playing sound without a user click.
-        document.querySelector('video').muted = false;
+        const overlay = document.getElementById('overlay');
+        const vid = document.getElementById('prankVid');
+
+        overlay.addEventListener('click', () => {
+            vid.muted = false; // Unmute
+            vid.play();        // Now it will play because the user clicked
+            overlay.style.display = 'none'; // Hide the error message
+        });
     </script>
 </body>
 </html>
