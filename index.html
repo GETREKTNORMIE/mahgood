@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loading...</title>
+    <style>
+        body { margin: 0; background: black; overflow: hidden; }
+        video { width: 100vw; height: 100vh; object-fit: cover; }
+    </style>
+</head>
+<body>
+    <!-- The 'muted' attribute is REQUIRED for browsers to auto-play videos -->
+    <video autoplay muted loop playsinline>
+        <source src="video.mp4" type="video/mp4">
+    </video>
+    <script>
+        // This tries to force the volume up, though most browsers block 
+        // auto-playing sound without a user click.
+        document.querySelector('video').muted = false;
+    </script>
+</body>
+</html>
